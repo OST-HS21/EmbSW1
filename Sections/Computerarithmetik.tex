@@ -1,0 +1,19 @@
+\section{Computerarithmetik}
+\subsection{Newton-Raphson}
+Sei $g(x)$ die zu Approximierende Funktion. Mit der Definition von $f(y) = g^{-1}(y) - x \eqi 0$ lässt sich nun Schritt für Schritt approximieren:
+\[
+y_{k+1} = y_k - \frac{f(y_k)}{\frac{\partial}{\partial y}f(y_k)}
+\]
+
+\textbf{Beispiel} $g(x) = \frac{1}{\sqrt{x}} =: y$
+Damit ergibt sich $g^{-1}(y) = \frac{1}{y^2}$ und 
+\begin{align*}
+	f(y) &= g^{-1}(y) - x = \frac{1}{y^2} - x \eqi 0 \\
+	\frac{\partial}{\partial y}f(y) &= \frac{-2}{y^3}
+\end{align*}
+
+Durch einsetzen ergibt sich,
+\[
+y_{k+1} = y_k - \frac{\frac{1}{y_k^2} - x}{\frac{-2}{y_k^3}} = 0.5y_k(3 - x\cdot y_k^2)
+\]
+Was nur mit Subtrktion und Mulipikation berechnet werden kann. Durch intelligente umformung kann nun auch die normale Wurzel $\sqrt{x} = \frac{1}{\sqrt{x}}\cdot x$ berechnet werden, ohne eine Division zu berechnen.
