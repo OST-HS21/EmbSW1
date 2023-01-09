@@ -1,0 +1,50 @@
+name: Create Release
+
+on: 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ZF_NAME: Zusammenfassung # The artifact and output name for this build.
+      
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - uses: OST-HS20/latex-parser-action@v1
+        id: latexparser
+        with:
+          latex_file: ${{env.ZF_NAME}}.tex
+          command_name: version
+          
+      # Build latest Latex
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: ${{env.ZF_NAME}}.tex
+          
+      - name: Create Release V${{steps.latexparser.outputs.command_value}}
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: V${{steps.latexparser.outputs.command_value}}
+          release_name: Release v${{steps.latexparser.outputs.command_value}}
+          draft: false 
+          
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{env.ZF_NAME}}.pdf
+          asset_name: ${{env.ZF_NAME}}.pdf
+          asset_content_type: application/pdf
+      
