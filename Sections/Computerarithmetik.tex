@@ -17,3 +17,6 @@ Durch einsetzen ergibt sich,
 y_{k+1} = y_k - \frac{\frac{1}{y_k^2} - x}{\frac{-2}{y_k^3}} = 0.5y_k(3 - x\cdot y_k^2)
 \]
 Was nur mit Subtrktion und Mulipikation berechnet werden kann. Durch intelligente umformung kann nun auch die normale Wurzel $\sqrt{x} = \frac{1}{\sqrt{x}}\cdot x$ berechnet werden, ohne eine Division zu berechnen.
+
+\subsection{Quantisierung Float-Int}
+Um mit statt mit float mit Integern zu rechnen, kann man diese zuerst durch multiplizieren von $2^n$ von float auf integer umrechnen. Diese Lineare Funktion mapt zB 0..1 auf 0..255. Anschliessend Berechnung mit int durchführen und am Schluss wieder mit $n$ nach rechts shiften um entsprechende neue Skalierung zu erhalten.
