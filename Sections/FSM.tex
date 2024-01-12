@@ -15,5 +15,20 @@ Bei Statecharts können Historie mechanism verwendet werden, wobei beim erneuten
 	\includegraphics[width=0.8\columnwidth]{Images/statechart_elemente}
 \end{center}
 
+Es können auch zeitliche Bedungungen dargestellt werden wie z.B. bei einem Anrufbeantworter:
+\begin{center}
+	\includegraphics[width=0.8\columnwidth]{Images/fsm_timers.png}
+\end{center}
+
 \subsection{Realisierung}
 Eine FSM wird häufig durch switch-Case, Tabellen, State-Pattern oder generischen Templates umgesetzt. Siehe Anhang.
+
+\subsubsection{Mealy‐Automat}
+Der nächste Zustand $Z_{n+1}$ist abhängig vom Input $X$ und von $Z_n$: $Z_{n+1} = f(Z_n, X)$.
+Der Output $Y$ ist abhängig vom inneren Zustand $Z_n$ und vom Input $X$: $Y = g(Z_n, X)$.
+Die Actions liegen deshalb bei den Transitionen.
+
+\subsubsection{Moore‐Automat}
+Der nächste Zustand $Z_{n+1}$ ist abhängig vom Input $X$ und von $Z_n$: $Z_{n+1} = f(Z_n, X)$.
+Der Output $Y$ ist nur abhängig vom inneren Zustand $Z_n$: $Y = g(Z_n)$.
+Die Actions liegen deshalb bei den Zuständen
