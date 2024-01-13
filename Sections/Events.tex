@@ -1,0 +1,11 @@
+\section{Events}
+\subsection{Interrupt Verarbeitung}
+\begin{enumerate}
+	\item I/O‐Element generiert einen Interrupt Request.
+	\item Die CPU unterbricht das laufende Programm.
+	\item Die Interrupts werden disabled (ausgeschaltet).
+	\item Das I/O‐Element wird informiert, dieses deaktiviert den Interrupt Request.
+	\item Die Interrupt Service Routine (ISR) wird ausgeführt.
+	\item Die Interrupts werden wieder enabled (eingeschaltet).
+	\item Die CPU führt das Programm an der unterbrochenen Stelle weiter.
+\end{enumerate}
