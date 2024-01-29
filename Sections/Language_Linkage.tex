@@ -1,0 +1,31 @@
+\section{Language Linkage}
+Der Linker benötigt einen eindeutigen Namen für jede Funktion.
+In C wird die Funktion \lstinline[style=cppstyle]{foo()} zu \lstinline[style=cppstyle]{_foo}.
+
+Das Zuweisen eines eindeutigen Namens in C++ wird als Name Mangling bezeichnet.
+Die Funktion \lstinline[style=cppstyle]{foo(int)} wird dann beispielsweise zu \lstinline[style=cppstyle]{_foo_i}. Die Funktion \lstinline[style=cppstyle]{foo(double, int)} wird dann beispielsweise zu \lstinline[style=cppstyle]{_foo_d_i}. \lstinline[style=cppstyle]{MyClass::foo(int)} zu \lstinline[style=cppstyle]{_MyClass_foo_i}.
+
+Im Funktionsprototypen (C++‐seitig) kann die Language Linkage festgelegt werden:
+\begin{lstlisting}[language=c, style=cppstyle]
+extern "C" void foo(int);	// use C ll
+extern void goo(int);		// use C++ ll
+void hoo(int);				// use C++ ll
+extern "C++" void koo(int);	// use C++ ll
+
+extern "C"
+{
+	// list multiple prototypes with C linkage, or
+	// #include C header file(s)
+}
+
+// Alternativ:
+#ifdef __cplusplus
+extern "C"
+{
+	#endif
+	// list multiple prototypes with C linkage, or
+	// #include C header file(s)
+	#ifdef __cplusplus
+}
+#endif
+\end{lstlisting}
