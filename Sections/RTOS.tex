@@ -8,7 +8,7 @@ Embedded Systeme sind System, welche ein Computer beinhlatet, aber selbst keine 
 \begin{itemize}
 	\item \textbf{Reaktive Systeme} interagieren mit ihrer Umbegung.
 	\item \textbf{Echtzeit} haben nebst funktionalen Anforderungen auch definierbare zeitliche Anforderungen zu erfüllen.
-	\item \textbf{Verlässliche Systeme} sind Systeme, welche hohe Zuverlässichkleitenen erfüllen müssen.
+	\item \textbf{Verlässliche Systeme} sind Systeme, welche hohe Zuverlässlichkeiten erfüllen müssen.
 \end{itemize}
 
 Ein \textbf{Deeply Embedded System}, besitzt üblicherweise kein GUI und Betriebssystem. z.b. Hörgerät, ABS-Controllers etc. Bei \textbf{Bare Metal Embedded System} wird auch kein OS verwendet.
@@ -25,9 +25,9 @@ wenigen verletzungen der Antwortzeiten nicht ernsthaft betroffen sind. Bei viele
 \subsection{Scheduler}
 Der \textbf{Scheduler} soll sicherstellen, dass Zeiteinschränkungen eingehalten werden. Dazu muss er entscheiden, welcher Task (Job) als nächstes Ausgeführt werden soll. Es gibt diverse Strategien
 \begin{enumerate}
-	\item FCF: hat Längere Mittlere wartezeit
+	\item FCFS: hat Längere Mittlere wartezeit
 	\item Round Robin: Fixe Reihenfolge immer wieder ausführen
-	\item SIF: Shortest Job First. Nachteil ist, dass längere Tasks verhungern können, dafür wird die mittlere Wartezeit reduziert.
+	\item SJF: Shortest Job First. Nachteil ist, dass längere Tasks verhungern können, dafür wird die mittlere Wartezeit reduziert.
 	\item Priority Scheduling: Tiefe Prioritäte Task können verhungern.
 \end{enumerate}
 
